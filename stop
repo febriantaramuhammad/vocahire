@@ -1,0 +1,500 @@
+* [33mfd97f55[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m first commit
+[31m|[m [1mdiff --git a/app/(main)/_components/AppSidebar.jsx b/app/(main)/_components/AppSidebar.jsx[m
+[31m|[m [1mnew file mode 100644[m
+[31m|[m [1mindex 0000000..43cf816[m
+[31m|[m [1m--- /dev/null[m
+[31m|[m [1m+++ b/app/(main)/_components/AppSidebar.jsx[m
+[31m|[m [36m@@ -0,0 +1,59 @@[m
+[31m|[m [32m+[m[32m"use client"[m
+[31m|[m [32m+[m
+[31m|[m [32m+[m[32mimport { Button } from "@/components/ui/button";[m
+[31m|[m [32m+[m[32mimport {[m
+[31m|[m [32m+[m[32m  Sidebar,[m
+[31m|[m [32m+[m[32m  SidebarContent,[m
+[31m|[m [32m+[m[32m  SidebarFooter,[m
+[31m|[m [32m+[m[32m  SidebarGroup,[m
+[31m|[m [32m+[m[32m  SidebarHeader,[m
+[31m|[m [32m+[m[32m  SidebarMenu,[m
+[31m|[m [32m+[m[32m  SidebarMenuButton,[m
+[31m|[m [32m+[m[32m  SidebarMenuItem,[m
+[31m|[m [32m+[m[32m} from "@/components/ui/sidebar";[m
+[31m|[m [32m+[m[32mimport { SidebarOptions } from "@/service/Constants";[m
+[31m|[m [32m+[m[32mimport { Plus } from "lucide-react";[m
+[31m|[m [32m+[m[32mimport Image from "next/image";[m
+[31m|[m [32m+[m[32mimport Link from "next/link";[m
+[31m|[m [32m+[m[32mimport { usePathname } from "next/navigation";[m
+[31m|[m [32m+[m
+[31m|[m [32m+[m[32mexport function AppSidebar() {[m
+[31m|[m [32m+[m[32m    const path = usePathname()[m
+[31m|[m [32m+[m[32m    console.log(path)[m
+[31m|[m [32m+[m[32m  return ([m
+[31m|[m [32m+[m[32m    <Sidebar>[m
+[31m|[m [32m+[m[32m      <SidebarHeader className="flex items-center mt-5">[m
+[31m|[m [32m+[m[32m        <Image[m
+[31m|[m [32m+[m[32m          src={"/logo.png"}[m
+[31m|[m [32m+[m[32m          alt="logo"[m
+[31m|[m [32m+[m[32m          width={200}[m
+[31m|[m [32m+[m[32m          height={100}[m
+[31m|[m [32m+[m[32m          className="w-[150px]"[m
+[31m|[m [32m+[m[32m        />[m
+[31m|[m [32m+[m[32m      </SidebarHeader>[m
+[31m|[m [32m+[m[32m      <Button className="w-full mt-2">[m
+[31m|[m [32m+[m[32m        {" "}[m
+[31m|[m [32m+[m[32m        <Plus /> Create New Interview{" "}[m
+[31m|[m [32m+[m[32m      </Button>[m
+[31m|[m [32m+[m[32m      <SidebarContent>[m
+[31m|[m [32m+[m[32m        <SidebarGroup>[m
+[31m|[m [32m+[m[32m          <SidebarContent>[m
+[31m|[m [32m+[m[32m            <SidebarMenu>[m
+[31m|[m [32m+[m[32m              {SidebarOptions.map((option, index) => ([m
+[31m|[m [32m+[m[32m                <SidebarMenuItem key={index} className='p-1'>[m
+[31m|[m [32m+[m[32m                  <SidebarMenuButton asChild className={`p-5 ${path==option.path&&'bg-cyan-50'}`}>[m
+[31m|[m [32m+[m[32m                    <Link href={option.path}>[m
+[31m|[m [32m+[m[32m                      <option.icon className={`${path==option.path&&'text-primary'}`}/>[m
+[31m|[m [32m+[m[32m                      <span className={`text-[16px] font-medium ${path==option.path&&'text-primary'}`}>{option.name}</span>[m
+[31m|[m [32m+[m[32m                    </Link>[m
+[31m|[m [32m+[m[32m                  </SidebarMenuButton>[m
+[31m|[m [32m+[m[32m                </SidebarMenuItem>[m
+[31m|[m [32m+[m[32m              ))}[m
+[31m|[m [32m+[m[32m            </SidebarMenu>[m
+[31m|[m [32m+[m[32m          </SidebarContent>[m
+[31m|[m [32m+[m[32m        </SidebarGroup>[m
+[31m|[m [32m+[m[32m      </SidebarContent>[m
+[31m|[m [32m+[m[32m      <SidebarFooter />[m
+[31m|[m [32m+[m[32m    </Sidebar>[m
+[31m|[m [32m+[m[32m  );[m
+[31m|[m [32m+[m[32m}[m
+[31m|[m [1mdiff --git a/app/(main)/dashboard/_components/CreateOptions.jsx b/app/(main)/dashboard/_components/CreateOptions.jsx[m
+[31m|[m [1mnew file mode 100644[m
+[31m|[m [1mindex 0000000..5aa21a6[m
+[31m|[m [1m--- /dev/null[m
+[31m|[m [1m+++ b/app/(main)/dashboard/_components/CreateOptions.jsx[m
+[31m|[m [36m@@ -0,0 +1,24 @@[m
+[31m|[m [32m+[m[32mimport { Phone, Video } from 'lucide-react'[m
+[31m|[m [32m+[m[32mimport Link from 'next/link'[m
+[31m|[m [32m+[m[32mimport React from 'react'[m
+[31m|[m [32m+[m
+[31m|[m [32m+[m[32mfunction CreateOptions() {[m
+[31m|[m [32m+[m[32m  return ([m
+[31m|[m [32m+[m[32m    <div className='grid grid-cols-2 gap-5'>[m
+[31m|[m [32m+[m[32m        <Link href={'/dashboard/create-interview'} className='bg-white border border-gray-200 rounded-lg p-5 flex flex-col gap-2 cursor-pointer'>[m
+[31m|[m [32m+[m[32m            <Video className='p-3 text-primary bg-cyan-50 rounded-lg h-12 w-12'/>[m
+[31m|[m [32m+[m[32m            <h2 className='font-bold'>Create New Interview</h2>[m
+[31m|[m [32m+[m[32m            <p className='text-gray-500'>Create AI Interviews and schedule then with Candidates</p>[m
+[31m|[m [32m+[m[32m        </Link>[m
+[31m|[m [32m+[m[32m        <div>[m
+[31m|[m [32m+[m[32m            <div className='bg-white border border-gray-200 rounded-lg p-5'>[m
+[31m|[m [32m+[m[32m            <Phone className='p-3 text-primary bg-cyan-50 rounded-lg h-12 w-12'/>[m
+[31m|[m [32m+[m[32m            <h2 className='font-bold'>Create Phone Screening Call</h2>[m
+[31m|[m [32m+[m[32m            <p className='text-gray-500'>Schedule phone screening call with candidates</p>[m
+[31m|[m [32m+[m[32m        </div>[m
+[31m|[m [32m+[m[32m        </div>[m
+[31m|[m [32m+[m[32m    </div>[m
+[31m|[m [32m+[m[32m  )[m
+[31m|[m [32m+[m[32m}[m
+[31m|[m [32m+[m
+[31m|[m [32m+[m[32mexport default CreateOptions[m
+[31m|[m \ No newline at end of file[m
+[31m|[m [1mdiff --git a/app/(main)/dashboard/_components/LatestInterviewList.jsx b/app/(main)/dashboard/_components/LatestInterviewList.jsx[m
+[31m|[m [1mnew file mode 100644[m
+[31m|[m [1mindex 0000000..3aafaed[m
+[31m|[m [1m--- /dev/null[m
+[31m|[m [1m+++ b/app/(main)/dashboard/_components/LatestInterviewList.jsx[m
+[31m|[m [36m@@ -0,0 +1,21 @@[m
+[31m|[m [32m+[m[32m"use client"[m
+[31m|[m [32m+[m[32mimport { Button } from '@/components/ui/button';[m
+[31m|[m [32m+[m[32mimport { Camera, Video } from 'lucide-react';[m
+[31m|[m [32m+[m[32mimport React, { useState } from 'react'[m
+[31m|[m [32m+[m
+[31m|[m [32m+[m[32mfunction LatestInterviewList() {[m
+[31m|[m [32m+[m[32m    const [interviewList, setInterviewList] = useState([]);[m
+[31m|[m [32m+[m[32m  return ([m
+[31m|[m [32m+[m[32m    <div className='my-5'>[m
+[31m|[m [32m+[m[32m        <h2 className='font-bold text-2xl'>Previously Created Interviews</h2>[m
+[31m|[m [32m+[m[32m        {interviewList?.length==0&&[m
+[31m|[m [32m+[m[32m        <div className='p-5 flex flex-col gap-3 items-center bg-white mt-5'>[m
+[31m|[m [32m+[m[32m            <Video className='h-10 w-10 text-primary'/>[m
+[31m|[m [32m+[m[32m            <h2>You don't have any interview created!</h2>[m
+[31m|[m [32m+[m[32m            <Button>+ Create New Interview</Button>[m
+[31m|[m [32m+[m[32m        </div>}[m
+[31m|[m [32m+[m[32m    </div>[m
+[31m|[m [32m+[m[32m  )[m
+[31m|[m [32m+[m[32m}[m
+[31m|[m [32m+[m
+[31m|[m [32m+[m[32mexport default LatestInterviewList[m
+[31m|[m \ No newline at end of file[m
+[31m|[m [1mdiff --git a/app/(main)/dashboard/_components/WelcomeContainer.jsx b/app/(main)/dashboard/_components/WelcomeContainer.jsx[m
+[31m|[m [1mnew file mode 100644[m
+[31m|[m [1mindex 0000000..e8dcfcc[m
+[31m|[m [1m--- /dev/null[m
+[31m|[m [1m+++ b/app/(main)/dashboard/_components/WelcomeContainer.jsx[m
+[31m|[m [36m@@ -0,0 +1,20 @@[m
+[31m|[m [32m+[m[32m"use client"[m
+[31m|[m [32m+[m
+[31m|[m [32m+[m[32mimport { useUser } from '@/app/provider'[m
+[31m|[m [32m+[m[32mimport Image from 'next/image';[m
+[31m|[m [32m+[m[32mimport React from 'react'[m
+[31m|[m [32m+[m
+[31m|[m [32m+[m[32mfunction WelcomeContainer() {[m
+[31m|[m [32m+[m[32m    const {user} = useUser();[m
+[31m|[m [32m+[m[32m  return ([m
+[31m|[m [32m+[m[32m    <div className='bg-white p-5 rounded-xl flex justify-between items-center'>[m
+[31m|[m [32m+[m[32m        <div>[m
+[31m|[m [32m+[m[32m            <h2 className='text-lg font-bold'> Welcome Back, {user?.name}</h2>[m
+[31m|[m [32m+[m[32m            <h2 className='text-gray-500'> AI-Driven Interviews, Hassel-Free Hiring</h2>[m
+[31m|[m [32m+[m[32m        </div>[m
+[31m|[m [32m+[m[32m       {user && <Image src={user?.picture} alt='userAvatar' width={40} height={40} className='rounded-full'/>}[m
+[31m|[m [32m+[m[32m    </div>[m
+[31m|[m [32m+[m[32m  )[m
+[31m|[m [32m+[m[32m}[m
+[31m|[m [32m+[m
+[31m|[m [32m+[m[32mexport default WelcomeContainer[m
+[31m|[m \ No newline at end of file[m
+[31m|[m [1mdiff --git a/app/(main)/dashboard/create-interview/_components/FormContainer.jsx b/app/(main)/dashboard/create-interview/_components/FormContainer.jsx[m
+[31m|[m [1mnew file mode 100644[m
+[31m|[m [1mindex 0000000..d3bae6f[m
+[31m|[m [1m--- /dev/null[m
+[31m|[m [1m+++ b/app/(main)/dashboard/create-interview/_components/FormContainer.jsx[m
+[31m|[m [36m@@ -0,0 +1,103 @@[m
+[31m|[m [32m+[m[32mimport { Button } from "@/components/ui/button";[m
+[31m|[m [32m+[m[32mimport { Input } from "@/components/ui/input";[m
+[31m|[m [32m+[m[32mimport {[m
+[31m|[m [32m+[m[32m  Select,[m
+[31m|[m [32m+[m[32m  SelectContent,[m
+[31m|[m [32m+[m[32m  SelectItem,[m
+[31m|[m [32m+[m[32m  SelectTrigger,[m
+[31m|[m [32m+[m[32m  SelectValue,[m
+[31m|[m [32m+[m[32m} from "@/components/ui/select";[m
+[31m|[m [32m+[m[32mimport { Textarea } from "@/components/ui/textarea";[m
+[31m|[m [32m+[m[32mimport { InterviewType } from "@/service/Constants";[m
+[31m|[m [32m+[m[32mimport { ArrowRight } from "lucide-react";[m
+[31m|[m [32m+[m[32mimport React, { useEffect, useState } from "react";[m
+[31m|[m [32m+[m
+[31m|[m [32m+[m[32mfunction FormContainer({ onHandleInputChange, GoToNext }) {[m
+[31m|[m [32m+[m[32m  const [interviewType, setInterviewType] = useState([]);[m
+[31m|[m [32m+[m
+[31m|[m [32m+[m[32m  useEffect(() => {[m
+[31m|[m [32m+[m[32m    if (interviewType) {[m
+[31m|[m [32m+[m[32m      onHandleInputChange("type", interviewType);[m
+[31m|[m [32m+[m[32m    }[m
+[31m|[m [32m+[m[32m  }, [interviewType]);[m
+[31m|[m [32m+[m
+[31m|[m [32m+[m[32m  const addInterviewType = (type) => {[m
+[31m|[m [32m+[m[32m    const data = interviewType.includes(type);[m
+[31m|[m [32m+[m[32m    if (!data) {[m
+[31m|[m [32m+[m[32m      setInterviewType((prev) => [...prev, type]);[m
+[31m|[m [32m+[m[32m    } else {[m
+[31m|[m [32m+[m[32m      const result = interviewType.filter((Item) => Item != type);[m
+[31m|[m [32m+[m[32m      setInterviewType(result);[m
+[31m|[m [32m+[m[32m    }[m
+[31m|[m [32m+[m[32m  };[m
+[31m|[m [32m+[m[32m  return ([m
+[31m|[m [32m+[m[32m    <div className="p-5 bg-white rounded-xl">[m
+[31m|[m [32m+[m[32m      <div>[m
+[31m|[m [32m+[m[32m        <h2 className="text-sm font-medium">Job Position</h2>[m
+[31m|[m [32m+[m[32m        <Input[m
+[31m|[m [32m+[m[32m          placeholder="e.g Front End Developer"[m
+[31m|[m [32m+[m[32m          className="mt-2"[m
+[31m|[m [32m+[m[32m          onChange={(event) =>[m
+[31m|[m [32m+[m[32m            onHandleInputChange("jobPosition", event.target.value)[m
+[31m|[m [32m+[m[32m          }[m
+[31m|[m [32m+[m[32m        />[m
+[31m|[m [32m+[m[32m      </div>[m
+[31m|[m [32m+[m[32m      <div className="mt-5">[m
+[31m|[m [32m+[m[32m        <h2 className="text-sm font-medium">Job Description</h2>[m
+[31m|[m [32m+[m[32m        <Textarea[m
+[31m|[m [32m+[m[32m          placeholder="Enter details job description"[m
+[31m|[m [32m+[m[32m          className="h-[200px] mt-2"[m
+[31m|[m [32m+[m[32m          onChange={(event) =>[m
+[31m|[m [32m+[m[32m            onHandleInputChange("jobDescription", event.target.value)[m
+[31m|[m [32m+[m[32m          }[m
+[31m|[m [32m+[m[32m        />[m
+[31m|[m [32m+[m[32m      </div>[m
+[31m|[m [32m+[m[32m      <div className="mt-5">[m
+[31m|[m [32m+[m[32m        <h2 className="text-sm font-medium">Interview Duration</h2>[m
+[31m|[m [32m+[m[32m        <Select[m
+[31m|[m [32m+[m[32m          onValueChange={(value) => onHandleInputChange("duration", value)}[m
+[31m|[m [32m+[m[32m        >[m
+[31m|[m [32m+[m[32m          <SelectTrigger className="w-full mt-2">[m
+[31m|[m [32m+[m[32m            <SelectValue placeholder="Select Duration" />[m
+[31m|[m [32m+[m[32m          </SelectTrigger>[m
+[31m|[m [32m+[m[32m          <SelectContent>[m
+[31m|[m [32m+[m[32m            <SelectItem value="5 Min">5 Min</SelectItem>[m
+[31m|[m [32m+[m[32m            <SelectItem value="15 Min">15 Min</SelectItem>[m
+[31m|[m [32m+[m[32m            <SelectItem value="30 Min">30 Min</SelectItem>[m
+[31m|[m [32m+[m[32m            <SelectItem value="45 Min">45 Min</SelectItem>[m
+[31m|[m [32m+[m[32m            <SelectItem value="60 Min">60 Min</SelectItem>[m
+[31m|[m [32m+[m[32m          </SelectContent>[m
+[31m|[m [32m+[m[32m        </Select>[m
+[31m|[m [32m+[m[32m      </div>[m
+[31m|[m [32m+[m[32m      <div className="mt-5">[m
+[31m|[m [32m+[m[32m        <h2 className="text-sm font-medium">Interview Type</h2>[m
+[31m|[m [32m+[m[32m        <div className="flex gap-3 flex-wrap mt-2">[m
+[31m|[m [32m+[m[32m          {InterviewType.map((type, index) => ([m
+[31m|[m [32m+[m[32m            <div[m
+[31m|[m [32m+[m[32m              key={index}[m
+[31m|[m [32m+[m[32m              className={`flex items-center cursor-pointer[m
+[31m|[m [32m+[m[32m                gap-2 p-1 px-2 bg-white border[m
+[31m|[m [32m+[m[32m                border-gray-200 rounded-2xl[m
+[31m|[m [32m+[m[32m                hover:bg-secondary[m
+[31m|[m [32m+[m[32m                ${[m
+[31m|[m [32m+[m[32m                  interviewType.includes(type.title) &&[m
+[31m|[m [32m+[m[32m                  "bg-cyan-100 text-primary"[m
+[31m|[m [32m+[m[32m                }`}[m
+[31m|[m [32m+[m[32m              onClick={() => addInterviewType(type.title)}[m
+[31m|[m [32m+[m[32m            >[m
+[31m|[m [32m+[m[32m              <type.icon className="h-4 w-4" />[m
+[31m|[m [32m+[m[32m              <span>{type.title}</span>[m
+[31m|[m [32m+[m[32m            </div>[m
+[31m|[m [32m+[m[32m          ))}[m
+[31m|[m [32m+[m[32m        </div>[m
+[31m|[m [32m+[m[32m      </div>[m
+[31m|[m [32m+[m[32m      <div className="mt-7 flex justify-end" onClick={() => GoToNext()}>[m
+[31m|[m [32m+[m[32m        <Button className="cursor-pointer">[m
+[31m|[m [32m+[m[32m          Generate Question <ArrowRight />[m
+[31m|[m [32m+[m[32m        </Button>[m
+[31m|[m [32m+[m[32m      </div>[m
+[31m|[m [32m+[m[32m    </div>[m
+[31m|[m [32m+[m[32m  );[m
+[31m|[m [32m+[m[32m}[m
+[31m|[m [32m+[m
+[31m|[m [32m+[m[32mexport default FormContainer;[m
+[31m|[m [1mdiff --git a/app/(main)/dashboard/create-interview/_components/QuestionList.jsx b/app/(main)/dashboard/create-interview/_components/QuestionList.jsx[m
+[31m|[m [1mnew file mode 100644[m
+[31m|[m [1mindex 0000000..a462bf8[m
+[31m|[m [1m--- /dev/null[m
+[31m|[m [1m+++ b/app/(main)/dashboard/create-interview/_components/QuestionList.jsx[m
+[31m|[m [36m@@ -0,0 +1,78 @@[m
+[31m|[m [32m+[m[32mimport { Button } from "@/components/ui/button";[m
+[31m|[m [32m+[m[32mimport axios from "axios";[m
+[31m|[m [32m+[m[32mimport { Loader2Icon } from "lucide-react";[m
+[31m|[m [32m+[m[32mimport React, { useEffect, useState } from "react";[m
+[31m|[m [32m+[m[32mimport { toast } from "sonner";[m
+[31m|[m [32m+[m[32mimport QuestionListContainer from "./QuestionListContainer";[m
+[31m|[m [32m+[m[32mimport { supabase } from "@/service/supabaseClient";[m
+[31m|[m [32m+[m[32mimport { useUser } from "@/app/provider";[m
+[31m|[m [32m+[m[32mimport { v4 as uuidv4 } from 'uuid';[m
+[31m|[m [32m+[m
+[31m|[m [32m+[m[32mfunction QuestionList({ formData }) {[m
+[31m|[m [32m+[m[32m  const [loading, setLoading] = useState(true);[m
+[31m|[m [32m+[m[32m  const [questionList, setQuestionList] = useState();[m
+[31m|[m [32m+[m[32m  const {user} = useUser();[m
+[31m|[m [32m+[m[32m  useEffect(() => {[m
+[31m|[m [32m+[m[32m    if (formData) {[m
+[31m|[m [32m+[m[32m      GenerateQuestionList();[m
+[31m|[m [32m+[m[32m    }[m
+[31m|[m [32m+[m[32m  }, [formData]);[m
+[31m|[m [32m+[m[32m  const GenerateQuestionList = async () => {[m
+[31m|[m [32m+[m[32m    setLoading(true);[m
+[31m|[m [32m+[m[32m    // console.log("formData", formData);[m
+[31m|[m [32m+[m[32m    try {[m
+[31m|[m [32m+[m[32m      const result = await axios.post("/api/ai-model", {[m
+[31m|[m [32m+[m[32m        ...formData,[m
+[31m|[m [32m+[m[32m      });[m
+[31m|[m [32m+[m[32m      console.log(result.data.content);[m
+[31m|[m [32m+[m[32m      const Content = result.data.content;[m
+[31m|[m [32m+[m[32m      const FINAL_CONTENT = Content.replace('"```json', "").replace("```", "");[m
+[31m|[m [32m+[m[32m      setQuestionList(JSON.parse(FINAL_CONTENT)?.interviewQuestions);[m
+[31m|[m [32m+[m[32m      setLoading(false);[m
+[31m|[m [32m+[m[32m    } catch (e) {[m
+[31m|[m [32m+[m[32m      toast("Server Error, Try Again!");[m
+[31m|[m [32m+[m[32m      setLoading(false);[m
+[31m|[m [32m+[m[32m    }[m
+[31m|[m [32m+[m[32m  };[m
+[31m|[m [32m+[m[32m  const onFinish = async () => {[m
+[31m|[m [32m+[m[32m    const interview_id = uuidv4();[m
+[31m|[m [32m+[m[32m    const { data, error } = await supabase[m
+[31m|[m [32m+[m[32m      .from("Interviews")[m
+[31m|[m [32m+[m[32m      .insert([[m
+[31m|[m [32m+[m[32m        {[m[41m [m
+[31m|[m [32m+[m[32m          ...formData,[m
+[31m|[m [32m+[m[32m          questionList:questionList,[m
+[31m|[m [32m+[m[32m          userEmail:user?.email,[m
+[31m|[m [32m+[m[32m          interview_id:interview_id[m
+[31m|[m [32m+[m[32m       },[m
+[31m|[m [32m+[m[32m      ])[m
+[31m|[m [32m+[m[32m      .select();[m
+[31m|[m [32m+[m[32m      console.log(data)[m
+[31m|[m [32m+[m[32m  };[m
+[31m|[m [32m+[m[32m  return ([m
+[31m|[m [32m+[m[32m    <div>[m
+[31m|[m [32m+[m[32m      {loading && ([m
+[31m|[m [32m+[m[32m        <div className="p-5 bg-cyan-50 rounded-xl border border-primary flex gap-5 items-center">[m
+[31m|[m [32m+[m[32m          <Loader2Icon className="animate-spin" />[m
+[31m|[m [32m+[m[32m          <div>[m
+[31m|[m [32m+[m[32m            <h2 className="font-medium">Generating Interview Questions</h2>[m
+[31m|[m [32m+[m[32m            <p className="text-primary">[m
+[31m|[m [32m+[m[32m              Our AI is crafting personalized questions base on your job[m
+[31m|[m [32m+[m[32m              position[m
+[31m|[m [32m+[m[32m            </p>[m
+[31m|[m [32m+[m[32m          </div>[m
+[31m|[m [32m+[m[32m        </div>[m
+[31m|[m [32m+[m[32m      )}[m
+[31m|[m [32m+[m[32m      {questionList?.length > 0 && ([m
+[31m|[m [32m+[m[32m        <div>[m
+[31m|[m [32m+[m[32m          <QuestionListContainer questionList={questionList} />[m
+[31m|[m [32m+[m[32m        </div>[m
+[31m|[m [32m+[m[32m      )}[m
+[31m|[m [32m+[m[32m      <div className="flex justify-end mt-10">[m
+[31m|[m [32m+[m[32m        <Button onClick={() => onFinish()}>Finish</Button>[m
+[31m|[m [32m+[m[32m      </div>[m
+[31m|[m [32m+[m[32m    </div>[m
+[31m|[m [32m+[m[32m  );[m
+[31m|[m [32m+[m[32m}[m
+[31m|[m [32m+[m
+[31m|[m [32m+[m[32mexport default QuestionList;[m
+[31m|[m [1mdiff --git a/app/(main)/dashboard/create-interview/_components/QuestionListContainer.jsx b/app/(main)/dashboard/create-interview/_components/QuestionListContainer.jsx[m
+[31m|[m [1mnew file mode 100644[m
+[31m|[m [1mindex 0000000..6a2c3a5[m
+[31m|[m [1m--- /dev/null[m
+[31m|[m [1m+++ b/app/(main)/dashboard/create-interview/_components/QuestionListContainer.jsx[m
+[31m|[m [36m@@ -0,0 +1,19 @@[m
+[31m|[m [32m+[m[32mimport React from 'react'[m
+[31m|[m [32m+[m
+[31m|[m [32m+[m[32mfunction QuestionListContainer({questionList}) {[m
+[31m|[m [32m+[m[32m  return ([m
+[31m|[m [32m+[m[32m    <div>[m
+[31m|[m [32m+[m[32m        <h2 className="font-bold text-lg mb-5">Generated Interview Questions:</h2>[m
+[31m|[m [32m+[m[32m          <div className="p-5 border border-gray-300 rounded-xl bg-white">[m
+[31m|[m [32m+[m[32m            {questionList.map((item,index) => ([m
+[31m|[m [32m+[m[32m              <div key={index} className="p-3 border border-gray-200 rounded-xl mb-3">[m
+[31m|[m [32m+[m[32m                <h2 className="font-medium">{item.question}</h2>[m
+[31m|[m [32m+[m[32m                <h2 className="text-sm text-primary">Type: {item?.type}</h2>[m
+[31m|[m [32m+[m[32m              </div>[m
+[31m|[m [32m+[m[32m            ))}[m
+[31m|[m [32m+[m[32m          </div>[m
+[31m|[m [32m+[m[32m    </div>[m
+[31m|[m [32m+[m[32m  )[m
+[31m|[m [32m+[m[32m}[m
+[31m|[m [32m+[m
+[31m|[m [32m+[m[32mexport default QuestionListContainer[m
+[31m|[m \ No newline at end of file[m
+[31m|[m [1mdiff --git a/app/(main)/dashboard/create-interview/page.jsx b/app/(main)/dashboard/create-interview/page.jsx[m
+[31m|[m [1mnew file mode 100644[m
+[31m|[m [1mindex 0000000..7de6655[m
+[31m|[m [1m--- /dev/null[m
+[31m|[m [1m+++ b/app/(main)/dashboard/create-interview/page.jsx[m
+[31m|[m [36m@@ -0,0 +1,55 @@[m
+[31m|[m [32m+[m[32m"use client";[m
+[31m|[m [32m+[m
+[31m|[m [32m+[m[32mimport { Progress } from "@/components/ui/progress";[m
+[31m|[m [32m+[m[32mimport { ArrowLeft } from "lucide-react";[m
+[31m|[m [32m+[m[32mimport { useRouter } from "next/navigation";[m
+[31m|[m [32m+[m[32mimport React, { useState } from "react";[m
+[31m|[m [32m+[m[32mimport FormContainer from "./_components/FormContainer";[m
+[31m|[m [32m+[m[32mimport QuestionList from "./_components/QuestionList";[m
+[31m|[m [32m+[m[32mimport { toast } from "sonner";[m
+[31m|[m [32m+[m
+[31m|[m [32m+[m[32mfunction CreateInterview() {[m
+[31m|[m [32m+[m[32m  const router = useRouter();[m
+[31m|[m [32m+[m[32m  const [step, setStep] = useState(1);[m
+[31m|[m [32m+[m[32m  const [formData, setFormData] = useState();[m
+[31m|[m [32m+[m[32m  const onHandleInputChange = (field, value) => {[m
+[31m|[m [32m+[m[32m    setFormData((prev) => ({[m
+[31m|[m [32m+[m[32m      ...prev,[m
+[31m|[m [32m+[m[32m      [field]: value,[m
+[31m|[m [32m+[m[32m    }));[m
+[31m|[m [32m+[m
+[31m|[m [32m+[m[32m    console.log("FormData", formData);[m
+[31m|[m [32m+[m[32m  };[m
+[31m|[m [32m+[m
+[31m|[m [32m+[m[32m  const onGoToNext = () => {[m
+[31m|[m [32m+[m[32m    if ([m
+[31m|[m [32m+[m[32m      !formData?.jobPosition ||[m
+[31m|[m [32m+[m[32m      !formData?.jobDescription ||[m
+[31m|[m [32m+[m[32m      !formData?.duration ||[m
+[31m|[m [32m+[m[32m      !formData.type[m
+[31m|[m [32m+[m[32m    ) {[m
+[31m|[m [32m+[m[32m      toast("Please enter all details!");[m
+[31m|[m [32m+[m[32m      return;[m
+[31m|[m [32m+[m[32m    }[m
+[31m|[m [32m+[m[32m    setStep(step + 1);[m
+[31m|[m [32m+[m[32m  };[m
+[31m|[m [32m+[m[32m  return ([m
+[31m|[m [32m+[m[32m    <div className="mt-10 px-10 md:px-24 lg:px-44 xl:px-56">[m
+[31m|[m [32m+[m[32m      <div className="flex gap-5 items-center">[m
+[31m|[m [32m+[m[32m        <ArrowLeft onClick={() => router.back()} className="cursor-pointer" />[m
+[31m|[m [32m+[m[32m        <h2 className="font-bold text-2xl">Create New Interview</h2>[m
+[31m|[m [32m+[m[32m      </div>[m
+[31m|[m [32m+[m[32m      <Progress value={step * 33.33} className="my-5" />[m
+[31m|[m [32m+[m[32m      {step == 1 ? ([m
+[31m|[m [32m+[m[32m        <FormContainer[m
+[31m|[m [32m+[m[32m          onHandleInputChange={onHandleInputChange}[m
+[31m|[m [32m+[m[32m          GoToNext={() => onGoToNext()}[m
+[31m|[m [32m+[m[32m        />[m
+[31m|[m [32m+[m[32m      ) : step == 2 ? ([m
+[31m|[m [32m+[m[32m        <QuestionList formData={formData}/>[m
+[31m|[m [32m+[m[32m      ) : null}[m
+[31m|[m [32m+[m[32m    </div>[m
+[31m|[m [32m+[m[32m  );[m
+[31m|[m [32m+[m[32m}[m
+[31m|[m [32m+[m
+[31m|[m [32m+[m[32mexport default CreateInterview;[m
+[31m|[m [1mdiff --git a/app/(main)/dashboard/page.jsx b/app/(main)/dashboard/page.jsx[m
+[31m|[m [1mnew file mode 100644[m
+[31m|[m [1mindex 0000000..0697221[m
+[31m|[m [1m--- /dev/null[m
+[31m|[m [1m+++ b/app/(main)/dashboard/page.jsx[m
+[31m|[m [36m@@ -0,0 +1,17 @@[m
+[31m|[m [32m+[m[32mimport React from 'react'[m
+[31m|[m [32m+[m[32mimport WelcomeContainer from './_components/WelcomeContainer'[m
+[31m|[m [32m+[m[32mimport CreateOptions from './_components/CreateOptions'[m
+[31m|[m [32m+[m[32mimport LatestInterviewList from './_components/LatestInterviewList'[m
+[31m|[m [32m+[m
+[31m|[m [32m+[m[32mfunction Dashboard() {[m
+[31m|[m [32m+[m[32m  return ([m
+[31m|[m [32m+[m[32m    <div>[m
+[31m|[m [32m+[m[32m      {/* <WelcomeContainer/> */}[m
+[31m|[m [32m+[m[32m      <h2 className='my-3 font-bold text-2xl'>Dashboard</h2>[m
+[31m|[m [32m+[m[32m      <CreateOptions/>[m
+[31m|[m [32m+[m[32m      <LatestInterviewList/>[m
+[31m|[m [32m+[m[32m    </div>[m
+[31m|[m [32m+[m[32m  )[m
+[31m|[m [32m+[m[32m}[m
+[31m|[m [32m+[m
+[31m|[m [32m+[m[32mexport default Dashboard[m
+[31m|[m \ No newline at end of file[m
+[31m|[m [1mdiff --git a/app/(main)/layout.js b/app/(main)/layout.js[m
+[31m|[m [1mnew file mode 100644[m
+[31m|[m [1mindex 0000000..c22255f[m
+[31m|[m [1m--- /dev/null[m
+[31m|[m [1m+++ b/app/(main)/layout.js[m
+[31m|[m [36m@@ -0,0 +1,16 @@[m
+[31m|[m [32m+[m[32mimport React from "react";[m
+[31m|[m [32m+[m[32mimport DashboardProvider from "./provider";[m
+[31m|[m [32m+[m
+[31m|[m [32m+[m[32mfunction DashboardLayout({ children }) {[m
+[31m|[m [32m+[m[32m  return ([m
+[31m|[m [32m+[m[32m    <div className="bg-secondary">[m
+[31m|[m [32m+[m[32m      <DashboardProvider>[m
+[31m|[m [32m+[m[32m        <div className="p-10">[m
+[31m|[m [32m+[m[32m         {children}[m
+[31m|[m [32m+[m[32m        </div>[m
+[31m|[m [32m+[m[32m    </DashboardProvider>[m
+[31m|[m [32m+[m[32m    </div>[m
+[31m|[m [32m+[m[32m  );[m
+[31m|[m [32m+[m[32m}[m
+[31m|[m [32m+[m
+[31m|[m [32m+[m[32mexport default DashboardLayout;[m
+[31m|[m [1mdiff --git a/app/(main)/provider.js b/app/(main)/provider.js[m
+[31m|[m [1mnew file mode 100644[m
+[31m|[m [1mindex 0000000..3826a70[m
+[31m|[m [1m--- /dev/null[m
+[31m|[m [1m+++ b/app/(main)/provider.js[m
+[31m|[m [36m@@ -0,0 +1,19 @@[m
+[31m|[m [32m+[m[32mimport { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";[m
+[31m|[m [32m+[m[32mimport React from "react";[m
+[31m|[m [32m+[m[32mimport {AppSidebar} from "./_components/AppSidebar";[m
+[31m|[m [32m+[m[32mimport WelcomeContainer from "./dashboard/_components/WelcomeContainer";[m
+[31m|[m [32m+[m
+[31m|[m [32m+[m[32mfunction DashboardProvider({ children }) {[m
+[31m|[m [32m+[m[32m  return ([m
+[31m|[m [32m+[m[32m    <SidebarProvider>[m
+[31m|[m [32m+[m[32m      <AppSidebar />[m
+[31m|[m [32m+[m[32m      <div className="w-full p-10">[m
+[31m|[m [32m+[m[32m        {/* <SidebarTrigger/> */}[m
+[31m|[m [32m+[m[32m        <WelcomeContainer/>[m
+[31m|[m [32m+[m[32m        {children}[m
+[31m|[m [32m+[m[32m    </div>[m
+[31m|[m [32m+[m[32m    </SidebarProvider>[m
+[31m|[m [32m+[m[32m 
