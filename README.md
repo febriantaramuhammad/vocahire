@@ -1,10 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+VocaHire
 
-## Getting Started
+VocaHire is an AI-powered platform designed to streamline the hiring process through smart candidate screening and interview automation. Built using Next.js, it delivers fast performance, scalability, and modern UI/UX.
 
-First, run the development server:
+> 🚀 Project bootstrapped with create-next-app
 
-```bash
+
+
+
+---
+
+✨ Features
+
+✅ AI-based candidate screening
+
+🧠 Automated interview assistant
+
+🎯 Fast and responsive Next.js frontend
+
+⚡ Built with modern technologies (Tailwind CSS, shadcn/ui, etc.)
+
+
+
+---
+
+🛠️ Getting Started
+
+To run the project locally, follow these steps:
+
+# Install dependencies
+npm install
+
+# Run the development server
 npm run dev
 # or
 yarn dev
@@ -12,25 +38,70 @@ yarn dev
 pnpm dev
 # or
 bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open your browser and navigate to:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+👉 http://localhost:3000
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+You can start editing the main page by modifying:
 
-## Learn More
+app/page.tsx
 
-To learn more about Next.js, take a look at the following resources:
+The app will auto-update as you make changes.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+📦 Technologies Used
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Next.js
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+TypeScript
+
+Tailwind CSS
+
+shadcn/ui
+
+OpenAI API (if applicable)
+
+Supabase (if applicable)
+
+
+
+---
+
+📚 Learn More
+
+Explore these resources to deepen your understanding:
+
+Next.js Documentation
+
+Learn Next.js
+
+Next.js GitHub Repository
+
+
+
+---
+
+🚀 Deployment
+
+This project is optimized for deployment using Vercel, the creators of Next.js.
+
+To deploy:
+
+Push your code to GitHub
+
+Import the repo into Vercel
+
+Done!
+
+
+More info in the Next.js Deployment Docs
+
+
+---
+
+🙌 Contributing
+
+Want to contribute? Feel free to open issues, pull requests, or share feedback!
